@@ -28,13 +28,12 @@ export class Game {
     }
   }
 
-  public Gagne(ligne: number):boolean{
+  public CheckRow(ligne: number):boolean{
     if (
         this._toto.TileAt(ligne, 0)!.Symbol != ' ' &&
         this._toto.TileAt(ligne, 1)!.Symbol != ' ' &&
         this._toto.TileAt(ligne, 2)!.Symbol != ' '
     ) {
-      //if first row is full with same symbol
       if (
           this._toto.TileAt(ligne, 0)!.Symbol == this._toto.TileAt(ligne, 1)!.Symbol &&
           this._toto.TileAt(ligne, 2)!.Symbol == this._toto.TileAt(ligne, 1)!.Symbol
@@ -45,13 +44,13 @@ export class Game {
   }
 
   public Winner(): string {
-    if (this.Gagne(0)) {
+    if (this.CheckRow(0)) {
       return this._toto.TileAt(0, 0)!.Symbol;
     }
-    if (this.Gagne(1)) {
+    if (this.CheckRow(1)) {
         return this._toto.TileAt(1, 0)!.Symbol;
       }
-    if (this.Gagne(2)) {
+    if (this.CheckRow(2)) {
         return this._toto.TileAt(2, 0)!.Symbol;
       }
     return ' ';
