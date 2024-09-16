@@ -28,52 +28,32 @@ export class Game {
     }
   }
 
-  public Winner(): string {
-    //if the positions in first row are taken
+  public Gagne(ligne: number):boolean{
     if (
-      this._toto.TileAt(0, 0)!.Symbol != ' ' &&
-      this._toto.TileAt(0, 1)!.Symbol != ' ' &&
-      this._toto.TileAt(0, 2)!.Symbol != ' '
+        this._toto.TileAt(ligne, 0)!.Symbol != ' ' &&
+        this._toto.TileAt(ligne, 1)!.Symbol != ' ' &&
+        this._toto.TileAt(ligne, 2)!.Symbol != ' '
     ) {
       //if first row is full with same symbol
       if (
-        this._toto.TileAt(0, 0)!.Symbol == this._toto.TileAt(0, 1)!.Symbol &&
-        this._toto.TileAt(0, 2)!.Symbol == this._toto.TileAt(0, 1)!.Symbol
+          this._toto.TileAt(ligne, 0)!.Symbol == this._toto.TileAt(ligne, 1)!.Symbol &&
+          this._toto.TileAt(ligne, 2)!.Symbol == this._toto.TileAt(ligne, 1)!.Symbol
       ) {
-        return this._toto.TileAt(0, 0)!.Symbol;
-      }
+        return true}
     }
+    return false
+  }
 
-    //if the positions in first row are taken
-    if (
-      this._toto.TileAt(1, 0)!.Symbol != ' ' &&
-      this._toto.TileAt(1, 1)!.Symbol != ' ' &&
-      this._toto.TileAt(1, 2)!.Symbol != ' '
-    ) {
-      //if middle row is full with same symbol
-      if (
-        this._toto.TileAt(1, 0)!.Symbol == this._toto.TileAt(1, 1)!.Symbol &&
-        this._toto.TileAt(1, 2)!.Symbol == this._toto.TileAt(1, 1)!.Symbol
-      ) {
+  public Winner(): string {
+    if (this.Gagne(0)) {
+      return this._toto.TileAt(0, 0)!.Symbol;
+    }
+    if (this.Gagne(1)) {
         return this._toto.TileAt(1, 0)!.Symbol;
       }
-    }
-
-    //if the positions in first row are taken
-    if (
-      this._toto.TileAt(2, 0)!.Symbol != ' ' &&
-      this._toto.TileAt(2, 1)!.Symbol != ' ' &&
-      this._toto.TileAt(2, 2)!.Symbol != ' '
-    ) {
-      //if middle row is full with same symbol
-      if (
-        this._toto.TileAt(2, 0)!.Symbol == this._toto.TileAt(2, 1)!.Symbol &&
-        this._toto.TileAt(2, 2)!.Symbol == this._toto.TileAt(2, 1)!.Symbol
-      ) {
+    if (this.Gagne(2)) {
         return this._toto.TileAt(2, 0)!.Symbol;
       }
-    }
-
     return ' ';
   }
 }
