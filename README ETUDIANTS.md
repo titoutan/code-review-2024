@@ -1,5 +1,3 @@
-pour chaque participants:
-
-NOM prenom 
-
-...
+BRANDO Titouan
+DELAGNES Antoine
+PELLETIER Alex
