@@ -10,6 +10,10 @@ const firstCol = 0;
 const secondCol = 1;
 const thirdCol = 2;
 
+const invalidFirstPlayerError = 'Invalid first player';
+const invalidNextPlayerError = 'Invalid next player';
+const invalidPositionError = 'Invalid position';
+
 export class Game {
   private _lastSymbol = empty;
   private _board: Board = new Board();
@@ -26,20 +30,20 @@ export class Game {
   private validateFirstMove(player: string) {
     if (this._lastSymbol == empty) {
       if (player == player2) {
-        throw new Error('Invalid first player');
+        throw new Error(invalidFirstPlayerError);
       }
     }
   }
 
   private validatePlayer(player: string) {
     if (player == this._lastSymbol) {
-      throw new Error('Invalid next player');
+      throw new Error(invalidNextPlayerError);
     }
   }
 
   private validatePositionIsEmpty(x: number, y: number) {
     if (this._board.TileAt(x, y).Symbol != empty) {
-      throw new Error('Invalid position');
+      throw new Error(invalidPositionError);
     }
   }
 
